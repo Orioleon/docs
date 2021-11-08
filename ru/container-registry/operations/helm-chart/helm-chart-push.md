@@ -49,36 +49,26 @@
   1. Сохраните Helm-чарт локально:
 
      ```bash
-     helm package . cr.yandex/<ID реестра>/<имя Helm-чарта>:<версия>
+     helm package --app-version <Имя версии пакета> --version <Версия Helm> . -d <Путь сохранения пакета>
      ```
 
      Результат выполнения команды:
 
      ```bash
-     ref:     cr.yandex/<ID реестра>/<имя Helm-чарта>:<версия>
-     digest:  f3c306aa678756aec30ef11a9483e45d1d0c1e5bab921fe86e8716957203239c
-     size:    4.7 KiB
-     name:    <имя Helm-чарта>
-     version: 5
-     <version>: saved
+   Successfully packaged chart and saved it to: <>Путь пакета/<Имя Helm-чарта><Версия Helm-чарта>.tgz
      ```
 
   1. Загрузите Helm-чарт в {{ container-registry-name }}:
 
      ```bash
-     helm push cr.yandex/<ID реестра>/<имя Helm-чарта>:<версия>
+     helm push <Пакет> oci://cr.yandex/<ID реестра>/<имя Helm-чарта>
      ```
 
      Результат выполнения команды:
 
      ```bash
-     The push refers to repository [cr.yandex/<ID реестра>/<имя Helm-чарта>]
-     ref:     cr.yandex/<ID реестра>/<имя Helm-чарта>:<версия>
-     digest:  f3c306aa678756aec30ef11a9483e45d1d0c1e5bab921fe86e8716957203239c
-     size:    4.7 KiB
-     name:    <имя Helm-чарта>
-     version: 5
-     <version>: pushed to remote (1 layer, 4.7 KiB total)
+   Pushed: cr.yandex/<ID реестра>t/имя Helm-чарта/<Имя пакета>:<Версия Helm-чарта>
+Digest: sha256:
      ```
 
 {% endlist %}
